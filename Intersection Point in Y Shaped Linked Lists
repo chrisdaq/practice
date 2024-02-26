@@ -1,0 +1,65 @@
+"""
+Given two singly linked lists of size N and M, write a program to get the point where two linked lists intersect each other.
+https://www.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=bottom_sticky_on_article
+"""
+
+
+#User function Template for python3
+'''
+	Function to return the value at point of intersection
+	in two linked list, connected in y shaped form.
+	
+	Function Arguments: head_a, head_b (heads of both the lists)
+	
+	Return Type: value in NODE present at the point of intersection
+	             or -1 if no common point.
+
+	Contributed By: Nagendra Jha
+
+	{
+		# Node Class
+		class Node:
+		    def __init__(self, data):   # data -> value stored in node
+		        self.data = data
+		        self.next = None
+	}
+'''
+
+#Function to find intersection point in Y shaped Linked Lists.
+def intersetPoint(head1,head2):
+    # List 1
+    node_a = head1
+    node_b = head2
+
+ 
+    while True:
+        if node_a.next == None:
+            while True:
+                if node_b.next == None:
+                    if node_b == node_a:
+                        return node_a.data
+                    else:
+                        return -1
+                else:
+                    if node_b == node_a:
+                        return node_a.data
+                    else:
+                        node_b = node_b.next
+                        
+        else:
+            while True:
+                if node_b.next == None:
+                    if node_b == node_a:
+                        return node_a.data
+                        
+                    else:
+                        node_a = node_a.next
+                        node_b = head2
+                        
+                else:
+                    if node_b == node_a:
+                        return node_a.data
+                    else:
+                        node_b = node_b.next
+
+ 
