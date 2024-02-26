@@ -1,0 +1,40 @@
+"""
+Given a singly linked list and a key, count the number of occurrences of the given key in the linked list.
+
+https://www.geeksforgeeks.org/problems/occurence-of-an-integer-in-a-linked-list/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=bottom_sticky_on_article
+
+"""
+
+"""  
+class Node:
+    def __init__(self, data):
+		self.data = data
+		self.next = None
+  This is method only submission.
+  You only need to complete the method.
+"""
+class Solution:
+    def count(self, head, key):
+        
+        node = head
+        i = 0
+        
+        while True:
+            if node.next != None:
+                if node.data == key:
+                    i += 1
+                    node = node.next
+                else:
+                    node = node.next
+            else:
+                if node.data == key:
+                    i += 1
+                    break
+                else:
+                    break
+        return i
+
+        
+        
+        
+        # Code here
