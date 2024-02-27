@@ -1,0 +1,55 @@
+'''
+https://leetcode.com/problems/add-two-numbers/description/
+
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+'''
+
+
+
+class Solution:
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
+        
+        # Set up dummy node for building list at end
+        dummyNode = ListNode(0)
+        tail = dummyNode
+
+        # Set variables to build numbers from input lists
+        sum1 = 0
+        counter1 = 0
+
+        sum2 = 0
+        counter2 = 0
+
+        # Get sum 1
+        while l1:
+            sum1 = sum1 + (l1.val * (10**counter1))
+            counter1 += 1
+            l1 = l1.next
+
+        # Get sum 2
+        while l2:
+            sum2 = sum2 + (l2.val * (10**counter2))
+            counter2 += 1
+            l2 = l2.next
+        
+        # Build number to reverse
+        num = sum1 + sum2
+
+        # Edge case for 0 value strings
+        if num == 0:
+            return ListNode(0)
+
+        # Reverse number
+        digits = [int(d) for d in str(num)][::-1]
+
+        # Build linked list from reversed number
+        for i in digits:
+            tail.next = ListNode(i)
+            tail = tail.next
+
+        return dummyNode.next
